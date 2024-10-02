@@ -1,6 +1,3 @@
 export default function getResponseFromAPI() {
-  return new Promise((resolve, reject) => {
-    // The Promise doesn't need to do anything specific in this case
-    // It just needs to be a valid Promise object
-  });
+  return new Promise(() => {});
 }
