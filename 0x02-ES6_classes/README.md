@@ -110,4 +110,4 @@ Author
 Mohamed ESSRHIR
 
 Contact
-If you have any questions or feedback, please contact m.essrhir98@gmail.com.
+If you have any questions or feedback, please contact m.essrhir98@gmail.com
