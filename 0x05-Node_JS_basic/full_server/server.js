@@ -1,24 +1,14 @@
-import express from 'express';
-import routes from './routes/index';
+const express = require('express');
+
+const router = require('./routes/index');
 
 const app = express();
-const defaultPort = 1245;
+const port = 1245;
 
-function startServer(port) {
-  app.use('/', routes);
+app.use('/', router);
+app.use('/students', router);
+app.use('/students/:major', router);
 
-  app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
-  }).on('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
-      console.log(`Port ${port} is already in use. Trying port ${port + 1}...`);
-      startServer(port + 1);
-    } else {
-      console.error('An error occurred:', err);
-    }
-  });
-}
-
-startServer(defaultPort);
+app.listen(port);
 
 export default app;
