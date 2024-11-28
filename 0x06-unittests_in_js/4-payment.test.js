@@ -1,27 +1,20 @@
-import sinon from 'sinon';
-import { strict as assert } from 'assert';
-import sendPaymentRequestToApi from './4-payment.js';
-import Utils from './utils.js';
+const sinon = require('sinon');
+const Utils = require('./utils');
+const { expect } = require('chai');
+const sendPaymentRequestToApi = require('./4-payment');
 
 describe('sendPaymentRequestToApi', () => {
-  it('should stub Utils.calculateNumber and verify console.log is called correctly', () => {
-    // Stub the Utils.calculateNumber function to always return 10
-    const calculateNumberStub = sinon.stub(Utils, 'calculateNumber').returns(10);
-    
-    // Spy on console.log to verify it logs the correct message
-    const logSpy = sinon.spy(console, 'log');
-    
-    // Call the function with test values
+  it('sendPaymentRequestToApi calls console.log with the right arguments', () => {
+    const bigBrother = sinon.spy(console);
+    const dummy = sinon.stub(Utils, 'calculateNumber');
+
+    dummy.returns(10);
     sendPaymentRequestToApi(100, 20);
-    
-    // Check if the stub was called with the expected arguments
-    assert(calculateNumberStub.calledOnceWithExactly('SUM', 100, 20));
-    
-    // Check if console.log was called with the correct message
-    assert(logSpy.calledOnceWithExactly('The total is: 10'));
-    
-    // Restore the stub and spy after the test
-    calculateNumberStub.restore();
-    logSpy.restore();
+    expect(dummy.calledWith('SUM', 100, 20)).to.be.true;
+    expect(dummy.callCount).to.be.equal(1);
+    expect(bigBrother.log.calledWith('The total is: 10')).to.be.true;
+    expect(bigBrother.log.callCount).to.be.equal(1);
+    dummy.restore();
+    bigBrother.log.restore();
   });
 });
