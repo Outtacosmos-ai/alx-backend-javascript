@@ -1,5 +1,5 @@
-const Utils = {
-    calculateNumber(type, a, b) {
+export const Utils = {
+    calculateNumber: (type, a, b) => {
       const roundedA = Math.round(a);
       const roundedB = Math.round(b);
   
@@ -9,14 +9,11 @@ const Utils = {
         case 'SUBTRACT':
           return roundedA - roundedB;
         case 'DIVIDE':
-          if (roundedB === 0) return 'Error';
-          return roundedA / roundedB;
+          return roundedB === 0 ? 'Error' : roundedA / roundedB;
         default:
           throw new Error('Invalid type');
       }
     }
   };
   
-  module.exports = Utils;
-  
-  
+  export default Utils;
