@@ -1,27 +1,21 @@
 const request = require('request');
 const { expect } = require('chai');
 
-describe('API endpoints', () => {
+describe('API integration testing', () => {
   const API_URL = 'http://localhost:7865';
 
-  describe('Index page', () => {
-    it('should return correct status code', (done) => {
+  describe('GET /', () => {
+    it('should return correct status code and message', (done) => {
       request.get(API_URL, (error, response, body) => {
         expect(response.statusCode).to.equal(200);
-        done();
-      });
-    });
-
-    it('should return correct result', (done) => {
-      request.get(API_URL, (error, response, body) => {
         expect(body).to.equal('Welcome to the payment system');
         done();
       });
     });
   });
 
-  describe('Cart page', () => {
-    it('should return 200 when id is a number', (done) => {
+  describe('GET /cart/:id', () => {
+    it('should return 200 and correct message when id is number', (done) => {
       request.get(`${API_URL}/cart/12`, (error, response, body) => {
         expect(response.statusCode).to.equal(200);
         expect(body).to.equal('Payment methods for cart 12');

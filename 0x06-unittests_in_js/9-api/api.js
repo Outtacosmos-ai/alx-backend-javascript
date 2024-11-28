@@ -8,7 +8,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/cart/:id(\\d+)', (req, res) => {
-  res.send(`Payment methods for cart ${req.params.id}`);
+  const id = req.params.id;
+  res.send(`Payment methods for cart ${id}`);
 });
 
 app.listen(port, () => {
