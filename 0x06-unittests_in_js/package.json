@@ -2,17 +2,20 @@
     "name": "0x06-unittests_in_js",
     "version": "1.0.0",
     "description": "Unit tests in JS",
+    "main": "0-calcul.js",
+    "type": "module",
     "scripts": {
-        "test": "mocha"
+      "test": "mocha"
     },
     "devDependencies": {
-        "mocha": "^9.2.2"
+      "mocha": "^9.2.2"
     },
-    "main": "0-calcul.js",
+    "dependencies": {
+      "chai": "^5.1.2",
+      "sinon": "^19.0.2"
+    },
     "keywords": [],
     "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "chai": "^5.1.2"
-    }
-}
+    "license": "ISC"
+  }
+  
