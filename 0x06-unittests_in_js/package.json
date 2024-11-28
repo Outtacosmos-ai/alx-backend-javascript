@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Unit tests in JS",
     "main": "index.js",
-    "type": "module",
+    "type": "module", 
     "scripts": {
       "test": "mocha"
     },
