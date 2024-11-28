@@ -1,13 +1,19 @@
 const request = require('request');
 const { expect } = require('chai');
 
-describe('API integration testing', () => {
+describe('API integration test', () => {
   const API_URL = 'http://localhost:7865';
 
   describe('GET /', () => {
-    it('should return correct status code and message', (done) => {
+    it('returns correct status code', (done) => {
       request.get(API_URL, (error, response, body) => {
         expect(response.statusCode).to.equal(200);
+        done();
+      });
+    });
+
+    it('returns correct result', (done) => {
+      request.get(API_URL, (error, response, body) => {
         expect(body).to.equal('Welcome to the payment system');
         done();
       });
@@ -15,15 +21,21 @@ describe('API integration testing', () => {
   });
 
   describe('GET /cart/:id', () => {
-    it('should return 200 and correct message when id is number', (done) => {
+    it('returns correct status code when :id is a number', (done) => {
       request.get(`${API_URL}/cart/12`, (error, response, body) => {
         expect(response.statusCode).to.equal(200);
+        done();
+      });
+    });
+
+    it('returns correct result when :id is a number', (done) => {
+      request.get(`${API_URL}/cart/12`, (error, response, body) => {
         expect(body).to.equal('Payment methods for cart 12');
         done();
       });
     });
 
-    it('should return 404 when id is not a number', (done) => {
+    it('returns 404 when :id is NOT a number', (done) => {
       request.get(`${API_URL}/cart/hello`, (error, response, body) => {
         expect(response.statusCode).to.equal(404);
         done();
