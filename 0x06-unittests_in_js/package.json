@@ -11,5 +11,8 @@
     "main": "0-calcul.js",
     "keywords": [],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "chai": "^5.1.2"
+    }
 }
