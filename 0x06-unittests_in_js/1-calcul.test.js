@@ -1,33 +1,49 @@
+// 1-calcul.test.js
+
 const assert = require('assert');
-const calculateNumber = require('./1-calcul.js');
+const calculateNumber = require('./1-calcul');
 
 describe('calculateNumber', () => {
-  describe('SUM operation', () => {
-    it('should return sum of rounded numbers', () => {
+  describe('SUM', () => {
+    it('should return 6 when inputs are 1.4 and 4.5', () => {
       assert.strictEqual(calculateNumber('SUM', 1.4, 4.5), 6);
-      assert.strictEqual(calculateNumber('SUM', 1.2, 3.7), 5);
-      assert.strictEqual(calculateNumber('SUM', 1.5, 3.7), 6);
-      assert.strictEqual(calculateNumber('SUM', 0.1, 0.2), 0);
+    });
+
+    it('should handle negative numbers', () => {
+      assert.strictEqual(calculateNumber('SUM', -1.4, -4.5), -6);
     });
   });
 
-  describe('SUBTRACT operation', () => {
-    it('should return difference of rounded numbers', () => {
+  describe('SUBTRACT', () => {
+    it('should return -4 when inputs are 1.4 and 4.5', () => {
       assert.strictEqual(calculateNumber('SUBTRACT', 1.4, 4.5), -4);
-      assert.strictEqual(calculateNumber('SUBTRACT', 5.6, 2.3), 4);
-      assert.strictEqual(calculateNumber('SUBTRACT', 0.1, 0.2), 0);
+    });
+
+    it('should handle negative numbers', () => {
+      assert.strictEqual(calculateNumber('SUBTRACT', -1.4, -4.5), 4);
     });
   });
 
-  describe('DIVIDE operation', () => {
-    it('should return division of rounded numbers', () => {
+  describe('DIVIDE', () => {
+    it('should return 0.2 when inputs are 1.4 and 4.5', () => {
       assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
-      assert.strictEqual(calculateNumber('DIVIDE', 8.6, 2.3), 3);
     });
 
-    it('should return Error when dividing by 0', () => {
+    it('should return "Error" when dividing by 0', () => {
       assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
-      assert.strictEqual(calculateNumber('DIVIDE', 8.6, 0.2), 'Error');
+    });
+
+    it('should handle division by rounded 0', () => {
+      assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0.4), 'Error');
+    });
+  });
+
+  describe('Invalid type', () => {
+    it('should throw an error for an invalid operation type', () => {
+      assert.throws(() => calculateNumber('MULTIPLY', 1.4, 4.5), {
+        name: 'Error',
+        message: 'Invalid operation type',
+      });
     });
   });
 });
