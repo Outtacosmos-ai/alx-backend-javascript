@@ -1,14 +1,17 @@
 {
-    "name": "0x06-unittests_in_js",
-    "version": "1.0.0",
-    "description": "Unittests in JS",
-    "main": "0-calcul.js",
-    "scripts": {
-      "test": "mocha"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-      "mocha": "^8.2.1"
-    }
+  "name": "node-starter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "chai": "^4.2.0",
+    "sinon": "^7.5.0",
+    "request": "^2.88.0"
   }
+}
